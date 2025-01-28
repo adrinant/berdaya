@@ -3,24 +3,19 @@ import { CustomMDX } from '@/app/components/mdx';
 import { formatDate, getBlogPosts } from '@/app/blog/utils';
 import { baseUrl } from '@/app/sitemap';
 
-// Define the params type explicitly
-interface Params {
+// Define the type of dynamic route parameters
+type Params = {
   slug: string;
-}
+};
 
-interface Props {
-  params: Params;
-}
-
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<Params[]> {
   const posts = getBlogPosts();
-
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
-export function generateMetadata({ params }: Props) {
+export function generateMetadata({ params }: { params: Params }) {
   const post = getBlogPosts().find((post) => post.slug === params.slug);
   if (!post) {
     return;
@@ -60,7 +55,7 @@ export function generateMetadata({ params }: Props) {
   };
 }
 
-export default function Blog({ params }: Props) {
+export default function Blog({ params }: { params: Params }) {
   const post = getBlogPosts().find((post) => post.slug === params.slug);
 
   if (!post) {
