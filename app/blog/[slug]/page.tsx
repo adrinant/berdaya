@@ -8,6 +8,11 @@ type Params = {
   slug: string;
 };
 
+// Define Props that use Params for Blog component
+type Props = {
+  params: Params;
+};
+
 export async function generateStaticParams(): Promise<Params[]> {
   const posts = getBlogPosts();
   return posts.map((post) => ({
@@ -15,7 +20,7 @@ export async function generateStaticParams(): Promise<Params[]> {
   }));
 }
 
-export function generateMetadata({ params }: { params: Params }) {
+export function generateMetadata({ params }: Props) {
   const post = getBlogPosts().find((post) => post.slug === params.slug);
   if (!post) {
     return;
@@ -55,7 +60,7 @@ export function generateMetadata({ params }: { params: Params }) {
   };
 }
 
-export default function Blog({ params }: { params: Params }) {
+export default function Blog({ params }: Props) {
   const post = getBlogPosts().find((post) => post.slug === params.slug);
 
   if (!post) {
