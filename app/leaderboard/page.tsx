@@ -1,9 +1,24 @@
-"use client";
+"use client"
 
 import React, { useState } from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 
-const LeaderboardEntry = ({ rank, teamName, institution, currentScore, teamMembers }) => {
+// Define prop types for LeaderboardEntry
+interface LeaderboardEntryProps {
+  rank: number;
+  teamName: string;
+  institution: string;
+  currentScore: number;
+  teamMembers: string[];
+}
+
+const LeaderboardEntry = ({
+  rank,
+  teamName,
+  institution,
+  currentScore,
+  teamMembers,
+}: LeaderboardEntryProps) => {
   const [expanded, setExpanded] = useState(false);
 
   return (

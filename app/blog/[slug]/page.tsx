@@ -1,37 +1,24 @@
-import { notFound } from 'next/navigation';
-import { CustomMDX } from '@/app/components/mdx';
-import { formatDate, getBlogPosts } from '@/app/blog/utils';
-import { baseUrl } from '@/app/sitemap';
+import { notFound } from 'next/navigation'
+import { CustomMDX } from '@/app/components/mdx'
+import { formatDate, getBlogPosts } from '@/app/blog/utils'
+import { baseUrl } from '@/app/sitemap'
 
-// Define the type of dynamic route parameters
-type Params = {
-  slug: string;
-};
+// Define the type for Params as a Promise
+type Params = Promise<{ slug: string }>;
 
-// Define Props that use Params for Blog component
-type Props = {
+interface PageProps {
   params: Params;
-};
-
-export async function generateStaticParams(): Promise<Params[]> {
-  const posts = getBlogPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
 }
 
-export function generateMetadata({ params }: Props) {
-  const post = getBlogPosts().find((post) => post.slug === params.slug);
+// Explicitly await the params in `generateMetadata` and `Blog`
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params;  // Await the params
+  const post = getBlogPosts().find((post) => post.slug === slug);
   if (!post) {
     return;
   }
 
-  const {
-    title,
-    publishedAt: publishedTime,
-    summary: description,
-    image,
-  } = post.metadata;
+  const { title, publishedAt: publishedTime, summary: description, image } = post.metadata;
   const ogImage = image
     ? image
     : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
@@ -60,8 +47,9 @@ export function generateMetadata({ params }: Props) {
   };
 }
 
-export default function Blog({ params }: Props) {
-  const post = getBlogPosts().find((post) => post.slug === params.slug);
+export default async function Blog({ params }: PageProps) {
+  const { slug } = await params;  // Await the params
+  const post = getBlogPosts().find((post) => post.slug === slug);
 
   if (!post) {
     notFound();
@@ -99,7 +87,7 @@ export default function Blog({ params }: Props) {
           {formatDate(post.metadata.publishedAt)}
         </p>
       </div>
-      <article className="prose text-justify">
+      <article className="prose">
         <CustomMDX source={post.content} />
       </article>
     </section>
