@@ -1,20 +1,24 @@
-import { notFound } from 'next/navigation'
-import { CustomMDX } from '@/app/components/mdx'
-import { formatDate, getBlogPosts } from '@/app/blog/utils'
-import { baseUrl } from '@/app/sitemap'
+import { notFound } from 'next/navigation';
+import { CustomMDX } from '@/app/components/mdx';
+import { formatDate, getBlogPosts } from '@/app/blog/utils';
+import { baseUrl } from '@/app/sitemap';
+
+interface Params {
+  slug: string;
+}
 
 export async function generateStaticParams() {
-  const posts = getBlogPosts()
+  const posts = getBlogPosts();
 
   return posts.map((post) => ({
     slug: post.slug,
-  }))
+  }));
 }
 
-export function generateMetadata({ params }) {
-  const post = getBlogPosts().find((post) => post.slug === params.slug)
+export function generateMetadata({ params }: { params: Params }) {
+  const post = getBlogPosts().find((post) => post.slug === params.slug);
   if (!post) {
-    return
+    return;
   }
 
   const {
@@ -22,10 +26,10 @@ export function generateMetadata({ params }) {
     publishedAt: publishedTime,
     summary: description,
     image,
-  } = post.metadata
+  } = post.metadata;
   const ogImage = image
     ? image
-    : `${baseUrl}/og?title=${encodeURIComponent(title)}`
+    : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
 
   return {
     title,
@@ -48,14 +52,14 @@ export function generateMetadata({ params }) {
       description,
       images: [ogImage],
     },
-  }
+  };
 }
 
-export default function Blog({ params }) {
-  const post = getBlogPosts().find((post) => post.slug === params.slug)
+export default function Blog({ params }: { params: Params }) {
+  const post = getBlogPosts().find((post) => post.slug === params.slug);
 
   if (!post) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -94,5 +98,5 @@ export default function Blog({ params }) {
         <CustomMDX source={post.content} />
       </article>
     </section>
-  )
+  );
 }
