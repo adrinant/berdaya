@@ -35,7 +35,7 @@ function ArrowIcon() {
               className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
               rel="noopener noreferrer"
               target="_blank"
-              href="mailto:dev@berdaya.ai"
+              href="mailto:berdaya.ai@gmail.com"
             >
               <ArrowIcon />
               <p className="ml-2 h-7">email us</p>

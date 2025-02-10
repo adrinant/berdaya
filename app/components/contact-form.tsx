@@ -18,6 +18,7 @@ export function ContactForm({ className }: React.ComponentProps<typeof Card>) {
       institution: "",
       teamDescription: "",
       email: "",
+      feedback: ""
     },
     success: false,
     errors: null,
@@ -26,42 +27,51 @@ export function ContactForm({ className }: React.ComponentProps<typeof Card>) {
   // State to track whether the checkbox is checked
   const [isAgreed, setIsAgreed] = React.useState(false);
 
+
   // Simple Terms and Conditions text
   const termsAndConditions = `
-    **Terms and Conditions for the Competition**
+1. **Eligibility**:
+   - Participants must be students enrolled in **SMA/SMK/MA/D1-D4/S1**.
+   - Each team can have a maximum of **2 members**.
+   - Participants must register before the deadline to be eligible.
 
-    1. **Eligibility**: 
-       - Participants must be at least 18 years old.
-       - Teams must consist of 2-5 members.
+2. **Registration**:
+   - All participants must provide accurate and verifiable information during registration.
+   - Each team can register only **once**.
+   - Registration closes on **11 February 2025**.
 
-    2. **Registration**:
-       - All team members must provide accurate information during registration.
-       - Each team can only register once.
+3. **Submission**:
+   - Participants must submit a **500-word essay (PDF format)** based on the given theme.
+   - All submissions must be original and must not infringe on any copyrights.
+   - Plagiarism or the use of AI-generated content without proper attribution will lead to **immediate disqualification**.
 
-    3. **Submission**:
-       - All submissions must be original work.
-       - Plagiarism will result in immediate disqualification.
+4. **Judging Criteria**:
+   - Entries will be evaluated based on **innovation, relevance to SDGs, feasibility, and creativity**.
+   - The judging panel consists of industry experts, and their decisions are **final and binding**.
 
-    4. **Judging**:
-       - Entries will be judged based on creativity, innovation, and adherence to the competition guidelines.
-       - The judges' decisions are final and binding.
+5. **Prizes**:
+   - Winners will receive **monetary prizes** as per the competition guidelines.
+   - Prizes are **non-transferable** and cannot be exchanged for cash.
+   - Winners will be notified via email and must respond within **7 days** to claim their prize.
 
-    5. **Prizes**:
-       - Prizes are non-transferable and cannot be exchanged for cash.
-       - Winners will be notified via email.
+6. **Intellectual Property**:
+   - Participants retain ownership of their submissions but grant **Berdaya AI** the right to use, publish, and promote their ideas with proper credit.
+   - The organizers may request further collaboration with outstanding participants.
 
-    6. **Liability**:
-       - The organizers are not responsible for any loss or damage to participants' property.
-       - Participants agree to indemnify the organizers against any claims arising from their participation.
+7. **Liability & Conduct**:
+   - The organizers are **not responsible** for any technical failures, data loss, or external disruptions during the competition.
+   - Participants must adhere to ethical conduct and fair competition practices.
+   - Any form of cheating, misrepresentation, or violation of rules will result in **disqualification**.
 
-    7. **Amendments**:
-       - The organizers reserve the right to modify these terms and conditions at any time.
+8. **Amendments**:
+   - The organizers reserve the right to **modify or update** these terms and conditions at any time.
+   - Any changes will be communicated through official channels.
 
-    By participating in this competition, you agree to abide by these terms and conditions.
+By participating in the **Berdaya AI Innovation Challenges**, you acknowledge that you have read, understood, and agreed to abide by these terms and conditions.
   `;
 
   return (
-    <Card className={cn("w-full max-w-md", className)}>
+    <Card className={cn("w-full max-w-xl", className)}>
       <CardHeader>
         <CardTitle>Join the Competition</CardTitle>
         <CardDescription>Fill out the form to register your team for the competition.</CardDescription>
@@ -191,16 +201,31 @@ export function ContactForm({ className }: React.ComponentProps<typeof Card>) {
             <div className="border p-4 rounded-md max-h-40 overflow-y-auto">
               <pre className="text-sm whitespace-pre-wrap">{termsAndConditions}</pre>
             </div>
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                id="agree"
-                name="agree"
-                checked={isAgreed}
-                onChange={(e) => setIsAgreed(e.target.checked)}
-                className="size-4"
-              />
-              <Label htmlFor="agree">I agree with the terms and conditions</Label>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  id="agree"
+                  name="agree"
+                  checked={isAgreed}
+                  onChange={(e) => setIsAgreed(e.target.checked)}
+                  className="size-4"
+                />
+                <Label htmlFor="agree">I agree with the terms and conditions</Label>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  id="feedback"
+                  name="feedback"
+                  className="size-4"
+                />
+                <Label htmlFor="feedback" className="text-sm">
+                  I want to get personalized feedbacks and access to all team scores
+                  <span className="text-xs text-muted-foreground ml-1">(additional fee applies*)</span>
+                </Label>
+              </div>
             </div>
           </div>
         </CardContent>

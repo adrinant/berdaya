@@ -8,9 +8,11 @@ export async function contactFormAction(_prevState: unknown, formData: FormData)
   const defaultValues = z.record(z.string(), z.string()).parse(Object.fromEntries(formData.entries()));
 
   try {
-    const data = contactFormSchema.parse(Object.fromEntries(formData));
+    const data = contactFormSchema.parse({
+      ...Object.fromEntries(formData),
+      feedback: formData.get('feedback') || '' // Handle empty feedback
+    });
 
-    // Store the form submission in Google Sheets
     const result = await appendToSheet(data);
     console.log("Form submission successful:", result);
 
@@ -21,6 +23,7 @@ export async function contactFormAction(_prevState: unknown, formData: FormData)
         institution: "",
         teamDescription: "",
         email: "",
+        feedback: "",
       },
       success: true,
       errors: null,

@@ -22,6 +22,7 @@ export async function appendToSheet(data: {
   institution: string;
   teamDescription?: string;
   email: string;
+  feedback: string;
 }) {
   try {
     if (!SPREADSHEET_ID) {
@@ -34,8 +35,9 @@ export async function appendToSheet(data: {
         data.teamName,
         data.memberName,
         data.institution,
-        data.teamDescription || "", // Optional field
+        data.teamDescription || "",
         data.email,
+        data.feedback || "",  // This will handle both undefined and empty string
         new Date().toISOString(),
       ],
     ];

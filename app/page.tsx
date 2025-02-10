@@ -2,62 +2,73 @@ import { BlogPosts } from '@/app/components/posts';
 
 export default function Page() {
   return (
-    <section className="text-justify px-4">
-      <h1 className="mb-6 text-3xl font-bold tracking-tight">
-        Berdaya AI Competition: Shaping the Future with Ethical AI
-      </h1>
-      <p className="mb-6 leading-relaxed">
-        Artificial Intelligence (AI) has the potential to transform the way we tackle global challenges like poverty and inequality. However, this power must be handled responsibly. How can we ensure AI is developed ethically to create a more equitable world?
-      </p>
-      <h2 className="mb-4 text-xl font-semibold">About the Competition</h2>
-      <p className="mb-6 leading-relaxed">
-        Join the Berdaya AI Competition: <strong>&quot;The Ethical Implications of AI in Addressing Global Inequality.&quot;</strong> This event invites students, researchers, and AI enthusiasts to explore AI&apos;s ethical dimensions and its role in reducing inequality. Participants will submit essays or research papers that critically examine the opportunities, challenges, and ethical considerations of using AI to address these issues.
-      </p>
+    <section className="max-w-4xl mx-auto px-4 py-8">
+      <div className="text-center mb-8">
+        <h1 className="text-3xl font-bold mb-4">🌟 Berdaya AI Innovation Challenges 🌟</h1>
+        <p className="text-lg">
+          Unleash your creativity and join Indonesia's brightest minds in AI to tackle real-world challenges in the 
+          <span className="italic"> Sustainable Development Goals (<a href="/blog/SDGs" className="text-blue-600 hover:text-blue-800">SDGs</a>)</span> !
+        </p>
+      </div>
 
-      <h3 className="mb-2 text-lg font-medium">Competition Topic:</h3>
-      <ul className="mb-6 list-disc list-inside leading-relaxed">
-        <li>How can AI reduce poverty and inequality?</li>
-        <li>What are the ethical risks of deploying AI in underdeveloped regions?</li>
-        <li>How can we ensure AI systems are fair, transparent, and accountable?</li>
-        <li>What role do governments, organizations, and individuals play in shaping ethical AI?</li>
-      </ul>
+      <div className="bg-gray-50 rounded-xl p-6 mb-8">
+        <h2 className="text-2xl font-bold mb-4">💡 Why Join?</h2>
+        <ul className="space-y-4">
+          <li className="flex items-start">
+            <span className="mr-2">🏆</span>
+            <span><strong>Pool Prize:</strong> Win millions of rupiah!</span>
+          </li>
+          <li className="flex items-start">
+            <span className="mr-2">📋</span>
+            <span><strong>Feedback:</strong> Get personalized guidance from industry experts.</span>
+          </li>
+          <li className="flex items-start">
+            <span className="mr-2">👩‍💻</span>
+            <span><strong>Team Up:</strong> Join with a friend (max. 2 members) — open for SMA/SMK/MA/D1-D4/S1 students.</span>
+          </li>
+        </ul>
+      </div>
 
-      <h3 className="mb-2 text-lg font-medium">Prizes:</h3>
-      <ul className="mb-6 list-disc list-inside leading-relaxed">
-        <li><strong>1st Place:</strong> $1,000 + Feature on Berdaya AI&apos;s platform</li>
-        <li><strong>2nd Place:</strong> $500 + Certificate of Achievement</li>
-        <li><strong>3rd Place:</strong> $250 + Certificate of Achievement</li>
-      </ul>
+      <div className="bg-gray-50 rounded-xl p-6 mb-8">
+        <h2 className="text-2xl font-bold mb-4">📅 Key Dates</h2>
+        <ul className="space-y-4">
+          <li className="flex items-start">
+            <span className="font-medium mr-2">Registration closes:</span>
+            11 February 2025
+          </li>
+          <li className="flex items-start">
+            <span className="font-medium mr-2">Submission:</span>
+            Submit a 500-word essay (PDF) and a short demo video by 28 February 2025
+          </li>
+        </ul>
+      </div>
 
-      <h3 className="mb-2 text-lg font-medium">Submission Guidelines:</h3>
-      <ul className="mb-6 list-disc list-inside leading-relaxed">
-        <li>Essays or research papers must be 2,000 to 5,000 words.</li>
-        <li>Submissions must be original and properly cited.</li>
-        <li>Deadline: <strong>January 01, 2025</strong>.</li>
-      </ul>
+      <div className="bg-yellow-50 rounded-xl p-6 mb-8">
+        <p className="text-lg font-medium">⚡ Pro Tip:</p>
+        <p>Register now, brainstorm later!</p>
+      </div>
 
-      <h3 className="mb-4 text-lg font-medium">Why Participate?</h3>
-      <p className="mb-6 leading-relaxed">
-        Showcase your ideas on a global stage, contribute to the conversation on ethical AI, and win cash prizes and recognition. Together, we can shape a future where technology serves humanity ethically and equitably.
-      </p>
+      <div className="text-center mb-8">
+        <p className="text-lg font-medium">Let's shape the future of AI for <a href="/blog/SDGs" className="text-blue-600 hover:text-blue-800">SDGs</a> — one idea at a time! 🌍✨</p>
+      </div>
 
-      <div className="my-6 flex flex-wrap gap-4">
+      <div className="flex gap-4 justify-center mb-8">
         <a
           href="/register"
-          className="bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-gray-500 transition-all"
+          className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-all font-medium"
         >
           Register Now
         </a>
         <a
           href="#"
-          className="bg-gray-400 text-white px-6 py-3 rounded-lg cursor-not-allowed"
+          className="bg-gray-300 text-gray-600 px-8 py-3 rounded-lg cursor-not-allowed"
           aria-disabled="true"
         >
-          Leaderboard (Will be available later)
+          Leaderboard (Coming Soon)
         </a>
       </div>
 
-      <div className="my-8">
+      <div className="mt-12">
         <BlogPosts />
       </div>
     </section>
