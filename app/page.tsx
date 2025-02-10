@@ -1,4 +1,5 @@
 import { BlogPosts } from '@/app/components/posts';
+import Link from 'next/link';
 
 export default function Page() {
   return (
@@ -7,7 +8,7 @@ export default function Page() {
         <h1 className="text-3xl font-bold mb-4">🌟 Berdaya AI Innovation Challenges 🌟</h1>
         <p className="text-lg">
           Unleash your creativity and join Indonesia's brightest minds in AI to tackle real-world challenges in the 
-          <span className="italic"> Sustainable Development Goals (<a href="/blog/SDGs" className="text-blue-600 hover:text-blue-800">SDGs</a>)</span> !
+          <span className="italic"> Sustainable Development Goals (<Link href="/blog/SDGs" className="text-blue-600 hover:text-blue-800">SDGs</Link>)</span> !
         </p>
       </div>
 
@@ -49,7 +50,7 @@ export default function Page() {
       </div>
 
       <div className="text-center mb-8">
-        <p className="text-lg font-medium">Let's shape the future of AI for <a href="/blog/SDGs" className="text-blue-600 hover:text-blue-800">SDGs</a> — one idea at a time! 🌍✨</p>
+        <p className="text-lg font-medium">Let's shape the future of AI for <Link href="/blog/SDGs" className="text-blue-600 hover:text-blue-800">SDGs</Link> — one idea at a time! 🌍✨</p>
       </div>
 
       <div className="flex gap-4 justify-center mb-8">
